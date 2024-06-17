@@ -59,7 +59,7 @@ export default function MainLayout({
         </div>
       ) : (
         <>
-          <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between w-full bg-white z-50">
+          <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between w-full bg-black text-white z-50">
             <nav className="flex items-center gap-2 text-lg font-semibold md:text-base">
               <Link
                 href="/all"
