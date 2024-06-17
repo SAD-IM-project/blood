@@ -128,7 +128,7 @@ export default function BloodPage() {
               key={post.id}
               post={post}
               handlePostClick={handlePostClick}
-              className="mb-4 p-4 bg-gray-100 rounded cursor-pointer h-[200px]"
+              className="mb-4 p-4 bg-gray-100/25 text-white rounded cursor-pointer h-[200px]"
             />
           ))
         )}

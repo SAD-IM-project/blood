@@ -32,16 +32,16 @@ export default function BloodCard({ post, handlePostClick, className }: Props) {
               >
                 {"blood type: " + post.blood_type}
               </span>
-              <span className="inline-block bg-blue-200/25 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">
+              <span className="inline-block bg-blue-200/60 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">
                 {"rh: " + post.rh}
               </span>
-              <span className="inline-block bg-yellow-200/25 text-yellow-800 text-xs px-2 py-1 rounded-full mr-2">
+              <span className="inline-block bg-yellow-200/60 text-yellow-800 text-xs px-2 py-1 rounded-full mr-2">
                 {"sex: " + post.sex}
               </span>
-              <span className="inline-block bg-orange-200/25 text-orange-800 text-xs px-2 py-1 rounded-full mr-2">
+              <span className="inline-block bg-orange-200/60 text-orange-800 text-xs px-2 py-1 rounded-full mr-2">
                 {"age: " + post.age}
               </span>
-              <span className="inline-block bg-orange-200/25 text-orange-800 text-xs px-2 py-1 rounded-full mr-2 max-w-20 overflow-clip whitespace-nowrap">
+              <span className="inline-block bg-orange-200/60 text-orange-800 text-xs px-2 py-1 rounded-full mr-2 max-w-20 overflow-clip whitespace-nowrap">
                 {post.country}
               </span>
             </div>
