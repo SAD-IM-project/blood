@@ -14,6 +14,9 @@ module.exports = {
           background: "hsl(var(--btn-background))",
           "background-hover": "hsl(var(--btn-background-hover))",
         },
+        custom: {
+          header: '#1d4673',
+        },
       },
     },
   },

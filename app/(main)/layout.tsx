@@ -6,19 +6,15 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import Link from "next/link";
 import {
-  Package2,
-  Search,
   CircleUser,
   CirclePlus,
   Bell,
   Mail,
 } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { SearchForm } from "@/components/ui/searchForm";
 import { Button } from "@/components/ui/button";
 import { Filter } from "@/components/ui/filter";
 import Image from "next/image";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import FilterNav from "@/components/FilterNav";
 
 export default function MainLayout({
@@ -30,6 +26,7 @@ export default function MainLayout({
   const router = useRouter();
   const [loading, setLoading] = React.useState(true);
   const [user, setUser] = React.useState<any>({});
+  
   const getUser = async () => {
     const {
       data: { user },
@@ -59,25 +56,19 @@ export default function MainLayout({
         </div>
       ) : (
         <>
-          <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between w-full bg-black text-white z-50">
-            <nav className="flex items-center gap-2 text-lg font-semibold md:text-base">
-              <Link
-                href="/all"
-                className="flex items-center gap-2 text-muted-foreground text-base transition-colors hover:text-foreground cursor-pointer"
-                style={{ zIndex: 10 }} // Ensuring it is on top
-              >
-                <div className="relative w-10 h-10 bg-muted">
+          <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-custom-header px-4 md:px-6 justify-between w-full text-white z-50">
+            <nav className="flex items-center gap-4 h-full">
+              <Link href="https://www.metatech.com.tw/tw/biomed/coretech" passHref>
+                <div className="h-full flex items-center">
                   <Image
-                    src="/app_images/icon.png"
-                    alt="Lost & Found"
-                    layout="fill"
-                    className="rounded-md object-cover"
+                    src="/app_images/三顧生醫.png"
+                    alt="三顧生醫"
+                    className="cursor-pointer object-contain h-full"
+                    // twice bigger
+                    width={250}
+                    height={400}
                   />
                 </div>
-                <span className="text-base whitespace-nowrap">
-                  Lost & Found
-                </span>{" "}
-                {/* Add whitespace-nowrap here */}
               </Link>
             </nav>
             <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
@@ -91,7 +82,7 @@ export default function MainLayout({
                   className="flex items-center gap-2 text-muted-foreground text-base transition-colors hover:text-foreground cursor-pointer"
                   style={{ zIndex: 10 }} // Ensuring it is on top
                 >
-                  {user? (
+                  {user ? (
                     <div className="relative w-7 h-7 rounded-full bg-muted">
                       <img
                         src={user.user_metadata.picture}
