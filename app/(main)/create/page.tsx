@@ -64,7 +64,7 @@ export default function Content({ params }: { params: { id: string } }) {
     const [description, setDescription] = React.useState<string | null>(null);
     const [postBy, setPostBy] = React.useState<string | null>(null);
     const [address, setAddress] = React.useState<string | null>(null);
-    const [lostFound, setLostFound] = React.useState<string | undefined>("lost");
+    const [lostFound, setLostFound] = React.useState<string | undefined>("user");
 
     //Category
     const [selectedMainCategory, setSelectedMainCategory] = React.useState<SingleValue<Option>>();
@@ -250,7 +250,7 @@ export default function Content({ params }: { params: { id: string } }) {
                     >
                         <Upload className="h-4 w-4 text-muted-foreground" />
                         <span className="sr-only">Upload</span>
-                        <div className="text-right">上傳遺失物圖片</div>
+                        <div className="text-right">Upload Preview</div>
                         <input
                             type="file"
                             ref={fileInputRef}
@@ -272,17 +272,17 @@ export default function Content({ params }: { params: { id: string } }) {
                 </div>
                 <Card className="w-1/2 h-full dark:bg-white dark:text-black">
                     <CardHeader>
-                        <CardTitle>上傳遺失物</CardTitle>
+                        <CardTitle>Test</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <p>
-                            <b>物品名稱：</b>
+                            <b>Name </b>
                         </p>
-                        <Input className="mb-2" placeholder="e.g. 雨傘"
+                        <Input className="mb-2" placeholder="e.g. John"
                             value={objectName as string} // Change the type of value prop from String to string
                             onChange={e => setObjectName(e.target.value)} />
                         <p>
-                            <b>尋獲時間：</b>
+                            <b>Birthday</b>
                         </p>
                         <Popover>
                             <PopoverTrigger asChild>
@@ -303,61 +303,16 @@ export default function Content({ params }: { params: { id: string } }) {
                                 </div>
                             </PopoverContent>
                         </Popover>
-                        <p className="mt-2">
-                            <b>尋獲地點：</b>
-                        </p>
-                        <Select
-                            options={Object.keys(locations).map(city => ({ value: city, label: city }))}
-                            className="w-[300px] my-2"
-                            placeholder="Select city..."
-                            value={selectedCity}
-                            onChange={handleCityChange}
-                            id="city"
-                        />
-                        <Select
-                            options={districtOptions}
-                            className="w-[300px] my-2"
-                            placeholder="Select district..."
-                            value={selectedDistrict}
-                            onChange={setSelectedDistrict}
-                            id="district"
-                            isDisabled={selectedCity === undefined}
-                        />
-                        <Input className="my-2" placeholder="e.g. 台大總圖"
-                            value={address as string} // Change the type of value prop from String to string
-                            onChange={e => setAddress(e.target.value)}
-                            disabled={selectedCity === undefined}
-                        />
-                        <p className="mt-2">
-                            <b>類別：</b>
-                        </p>
-                        <Select
-                            options={Object.keys(categories).map(cat => ({ value: cat, label: cat }))}
-                            className="w-[300px] my-2"
-                            placeholder="Select main category..."
-                            value={selectedMainCategory}
-                            onChange={handleMainCategoryChange}
-                            id="mainCategory"
-                        />
-                        <Select
-                            options={subCategoryOptions}
-                            className="w-[300px] my-2"
-                            placeholder="Select sub category..."
-                            value={selectedSubCategory}
-                            onChange={setSelectedSubCategory}
-                            id="subCategory"
-                            isDisabled={selectedMainCategory === undefined}
-                        />
 
-                        <Tabs value={lostFound} onValueChange={onTabChange} defaultValue="lost" className="my-2">
+                        <Tabs value={lostFound} onValueChange={onTabChange} defaultValue="user" className="my-2">
                             <TabsList className="w-full my-2">
-                                <TabsTrigger className="w-full my-2" value="lost">Lost</TabsTrigger>
-                                <TabsTrigger className="w-full my-2" value="found">Found</TabsTrigger>
+                                <TabsTrigger className="w-full my-2" value="user">User</TabsTrigger>
+                                <TabsTrigger className="w-full my-2" value="company">Company</TabsTrigger>
                             </TabsList>
                         </Tabs>
 
                         <p>
-                            <b>物品描述：</b>
+                            <b>Other details</b>
                         </p>
                         <div className="grid w-full gap-1.5">
                             <Textarea
@@ -372,7 +327,7 @@ export default function Content({ params }: { params: { id: string } }) {
                     <CardFooter>
                         <Button type="submit" size="sm" className="ml-auto gap-1.5"
                             onClick={handleSubmit} disabled={uploading}>
-                            {uploading? "Uploading...": "Submit"}
+                            {uploading? "Uploading...": "Upload"}
                             {uploading? <Loader className="size-3.5 animate-spin"/>:<ArrowUpFromLine className="size-3.5" />}
                         </Button>
                     </CardFooter>
