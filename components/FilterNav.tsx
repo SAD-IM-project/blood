@@ -13,16 +13,16 @@ export default function FilterNav() {
         All
       </Link>
       <Link
-        href="/lost"
-        className={`text-muted-foreground text-base transition-colors hover:text-foreground cursor-pointer ${path==="/lost" ? " text-blue-500" : ""}`}
+        href="/blood"
+        className={`text-muted-foreground text-base transition-colors hover:text-foreground cursor-pointer ${path==="/blood" ? " text-blue-500" : ""}`}
       >
-        Lost
+        Blood
       </Link>
       <Link
-        href="/found"
-        className={`text-muted-foreground text-base transition-colors hover:text-foreground cursor-pointer ${path==="/found" ? " text-blue-500" : ""}`}
+        href="/research"
+        className={`text-muted-foreground text-base transition-colors hover:text-foreground cursor-pointer ${path==="/research" ? " text-blue-500" : ""}`}
       >
-        Found
+        Research
       </Link>
     </nav>
   );
