@@ -2,16 +2,20 @@ import { Card } from "@/components/ui/card";
 import React from "react";
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Blood } from "@/app/(main)/blood/fake_object";
+import { Research } from "@/app/(main)/research/fake_research";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  post: Blood;
+  post: Research;
   handlePostClick: (id: string) => void;
   className?: string;
 };
 
-export default function BloodCard({ post, handlePostClick, className }: Props) {
+export default function ResearchCard({
+  post,
+  handlePostClick,
+  className,
+}: Props) {
   const router = useRouter();
   return (
     <Card
@@ -20,34 +24,33 @@ export default function BloodCard({ post, handlePostClick, className }: Props) {
       className={className}
     >
       <div className="flex flex-wrap h-full">
-        <div className="w-3/5 h-full ">
-          <div className="flex mr-2 flex-wrap h-full justify-normal">
+        <div className="w-3/5 h-full">
+          <div className="flex mr-2 flex-wrap h-full justify-normal overflow-auto">
             <div className="flex w-full h-[20%] items-center">
-              <h3 className="font-semibold w-full">{post.owner_name}</h3>
+              <h3 className="font-semibold w-full">{post.research_name}</h3>
             </div>
-
+            <div className="flex w-full h-[20%] items-center">
+              <h5 className="font-semibold w-full text-gray-300">{post.corporation_name}</h5>
+            </div>
             <div className="flex w-full h-[20%] items-center">
               <span
                 className={`inline-block text-sm px-2 py-1 rounded mr-2 bg-red-200 text-red-800`}
               >
-                {"blood type: " + post.blood_type}
+                {"Quota: " + post.quota + " people"}
               </span>
               <span className="inline-block bg-blue-200/80 text-blue-800 text-xs px-2 py-1 rounded-full mr-2">
-                {"rh: " + post.rh}
-              </span>
-              <span className="inline-block bg-yellow-200/80 text-yellow-800 text-xs px-2 py-1 rounded-full mr-2">
-                {"sex: " + post.sex}
-              </span>
-              <span className="inline-block bg-orange-200/80 text-orange-800 text-xs px-2 py-1 rounded-full mr-2">
-                {"age: " + post.age}
+                {"Price (start from): " + post.price + " NTD"}
               </span>
               <span className="inline-block bg-orange-200/80 text-orange-800 text-xs px-2 py-1 rounded-full mr-2 max-w-20 overflow-clip whitespace-nowrap">
                 {post.country}
               </span>
             </div>
-            <div className="flex w-full h-[60%] py-2">
+            <div className="flex w-full h-[40%] py-2">
               {post.tags.map((tag) => (
-                <span key={tag} className="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded-full mr-2 h-fit">
+                <span
+                  key={tag}
+                  className="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded-full mr-2 h-fit"
+                >
                   {tag}
                 </span>
               ))}

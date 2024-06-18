@@ -4,8 +4,9 @@
 import { useSearchParams } from "next/navigation";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import ObjectCard from "@/components/ObjectCard";
 import Loading from "@/components/Loading";
+import { Research, generateFakeResearch } from "./fake_research";
+import ResearchCard from "@/components/ResearchCard";
 
 interface Object {
   address: string;
@@ -33,7 +34,7 @@ interface Object {
 export default function FoundFilter() {
   const router = useRouter();
   const params = useSearchParams();
-  const [objects, setObjects] = useState<Object[]>([]);
+  const [objects, setObjects] = useState<Research[]>([]);
   const [loading, setLoading] = useState(true);
 
   // get search query
@@ -60,11 +61,13 @@ export default function FoundFilter() {
   const getObject = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/object/get?object_id=all&search=${search}`, 
-      {
-        method: "GET",
-      });
-      const data = await response.json();
+      // const response = await fetch(`/api/object/get?object_id=all&search=${search}`, 
+      // {
+      //   method: "GET",
+      // });
+      // const data = await response.json();
+      // setObjects(data);
+      const data = generateFakeResearch(10);
       setObjects(data);
     } catch (error) {
       console.error("Network error:", error);
@@ -74,31 +77,31 @@ export default function FoundFilter() {
   }
 
   // filtering
-  const filteredObjects = objects.filter((object) => {
-    // filter by lost
-    if (object.type !== 'found') {
-      return false;
-    }
-    // filter by subCategories
-    if (subCategoriesArray.length > 0 && subCategoriesArray[0] !== '' && !subCategoriesArray.includes(object.category_name)) {
-      return false;
-    }
-    // filter by districts
-    if (districts_idArray.length > 0 && districts_idArray[0] !== '' && !districts_idArray.includes(object.in_district)) {
-      return false;
-    }
-    // filter by date
-    // format of date array [start_date_YYYY, start_date_MM, start_date_DD, end_date_YYYY, end_date_MM, end_date_DD]
-    if (dateArray.length === 6) {
-      const startDate = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]);
-      const endDate = new Date(dateArray[3], dateArray[4] - 1, dateArray[5]);
-      const postDate = new Date(object.happen_time);
-      if (postDate < startDate || postDate > endDate) {
-        return false;
-      }
-    }
-    return true;
-  });
+  // const filteredObjects = objects.filter((object) => {
+  //   // filter by lost
+  //   if (object.type !== 'found') {
+  //     return false;
+  //   }
+  //   // filter by subCategories
+  //   if (subCategoriesArray.length > 0 && subCategoriesArray[0] !== '' && !subCategoriesArray.includes(object.category_name)) {
+  //     return false;
+  //   }
+  //   // filter by districts
+  //   if (districts_idArray.length > 0 && districts_idArray[0] !== '' && !districts_idArray.includes(object.in_district)) {
+  //     return false;
+  //   }
+  //   // filter by date
+  //   // format of date array [start_date_YYYY, start_date_MM, start_date_DD, end_date_YYYY, end_date_MM, end_date_DD]
+  //   if (dateArray.length === 6) {
+  //     const startDate = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]);
+  //     const endDate = new Date(dateArray[3], dateArray[4] - 1, dateArray[5]);
+  //     const postDate = new Date(object.happen_time);
+  //     if (postDate < startDate || postDate > endDate) {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // });
 
   React.useEffect(() => {
     getObject();
@@ -106,20 +109,20 @@ export default function FoundFilter() {
 
   return (
     <>
-      <div className="bg-white overflow-y-scroll p-4 w-full h-full">
+      <div className="bg-black text-white overflow-y-scroll p-4 w-full h-full">
         {loading ? (
           <Loading />
         ) : (
-          filteredObjects.map((post) => (
-            <ObjectCard
-              key={post.object_id}
+          objects.map((post) => (
+            <ResearchCard
+              key={post.id}
               post={post}
               handlePostClick={handlePostClick}
-              className="mb-4 p-4 bg-gray-100 rounded cursor-pointer h-[200px]"
+              className="mb-4 p-4 bg-gray-100/25 text-white rounded cursor-pointer h-[200px]"
             />
           ))
         )}
-        {filteredObjects.length === 0 && !loading ? (
+        {objects.length === 0 && !loading ? (
           <div className="flex justify-center items-center w-full h-full">
             <div className="text-center text-gray-500">沒有相關的搜尋結果</div>
           </div>
