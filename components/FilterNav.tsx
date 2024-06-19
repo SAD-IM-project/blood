@@ -7,10 +7,10 @@ export default function FilterNav() {
   return (
     <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6 pointer-events-auto">
       <Link
-        href="/all"
-        className={`text-muted-foreground text-base transition-colors hover:text-foreground cursor-pointer ${path==="/all" ? " text-blue-500" : ""}`}
+        href="/homepage"
+        className={`text-muted-foreground text-base transition-colors hover:text-foreground cursor-pointer ${path==="/homepage" ? " text-blue-500" : ""}`}
       >
-        All
+        Home
       </Link>
       <Link
         href="/blood"

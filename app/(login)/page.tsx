@@ -34,10 +34,10 @@ export default function Login({
     <div className="flex-1 flex flex-col w-full h-full px-8 justify-center items-center gap-2">
       <Card className="">
         <CardHeader>
-          <CardTitle>歡迎來到 Lost & Found 肉絲飯</CardTitle>
+          <CardTitle>歡迎來到三顧生醫</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>歡迎使用我們的平台，讓我們來幫助您找回遺失的物品！</p>
+          <p>歡迎使用我們的平台！</p>
         </CardContent>
         <CardContent>
           <form className="flex w-full justify-center">
