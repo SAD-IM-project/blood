@@ -55,7 +55,8 @@ export default function FoundFilter() {
   const districts_idArray = districts_id.split(',');
 
   const handlePostClick = (id: string) => {
-    router.push(`/content/${id}`);
+    console.log(id);
+    // router.push(`/content/${id}`);
   };
 
   const getObject = async () => {
@@ -117,7 +118,7 @@ export default function FoundFilter() {
             <ResearchCard
               key={post.id}
               post={post}
-              handlePostClick={handlePostClick}
+              handlePostClick={() => handlePostClick(post.id)}
               className="mb-4 p-4 bg-gray-100/25 text-white rounded cursor-pointer h-[200px]"
             />
           ))

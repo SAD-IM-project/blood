@@ -20,7 +20,7 @@ export default function ResearchCard({
   return (
     <Card
       key={post.id}
-      onClick={() => router.push(`/content`)}
+      onClick={() => router.push(`/research_test`)}
       className={className}
     >
       <div className="flex flex-wrap h-full">
